@@ -41,8 +41,15 @@ Output:
 Explanation:
 The table is pivoted, each column represents a city, and each row represents a specific month.
 
-Solution:-import pandas as pd
+Solution:-
+import pandas as pd
+
 
 def pivotTable(weather: pd.DataFrame) -> pd.DataFrame:
-    return weather.pivot(index='month', columns='city', values='temperature').reset_index()
+  return weather.pivot_table(
+      index='month',
+      columns='city',
+      values='temperature',
+      aggfunc='max',
+  )
 
